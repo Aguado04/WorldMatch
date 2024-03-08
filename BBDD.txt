@@ -1,0 +1,9 @@
+CREATE DATABASE worldmatch;
+use worldmatch;
+CREATE TABLE Usuario(
+    Id_cliente Int auto_increment NOT NULL,
+	Nombre_cliente Varchar(30),
+    Contrasena_cliente Varchar(30),
+    Email_cliente Varchar(30),
+    Primary Key(Id_cliente)
+);
