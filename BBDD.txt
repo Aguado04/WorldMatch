@@ -7,3 +7,52 @@ CREATE TABLE Usuario(
     Email_cliente Varchar(30),
     Primary Key(Id_cliente)
 );
+
+CREATE TABLE Favorito(
+    Id_favorito Int auto_increment NOT NULL,
+       Nombre_favorito Varchar(90),
+    Primary Key(Id_favorito)
+);
+
+CREATE TABLE Usuario_Favorito(
+	Id_usuario_favorito Int,
+    Id_favorito_usuario Int,
+    
+    FOREIGN KEY (Id_usuario_favorito) REFERENCES Usuario(Id_cliente),
+    FOREIGN KEY (Id_favorito_usuario) REFERENCES Favorito(Id_favorito)
+);
+
+CREATE TABLE Liga(
+        Id_liga Int auto_increment NOT NULL,
+        Nombre_liga Varchar(90),
+        Url_liga Varchar(90),
+        Primary Key(Id_liga)
+);
+
+CREATE TABLE Liga_Favorito(
+	Id_liga_favorito Int,
+    Id_favorito_liga Int,
+    
+    FOREIGN KEY (Id_liga_favorito) REFERENCES Liga(Id_liga),
+    FOREIGN KEY (Id_favorito_liga) REFERENCES Favorito(Id_favorito)
+);
+
+CREATE TABLE Equipo(
+         Id_equipo Int auto_increment NOT NULL,
+         Nombre_equipo Varchar(90),
+
+         Primary Key(Id_equipo),
+         Id_liga_equipo Int,
+         FOREIGN KEY (Id_liga_equipo) References Liga(Id_liga)
+);
+
+CREATE TABLE Jugador(
+         Id_jugador Int auto_increment NOT NULL,
+         Nombre_jugador Varchar(90),
+         Edad_jugador Varchar(90),
+         Dorsal_jugador Varchar(90),
+
+         Primary Key (Id_jugador),
+         Id_equipo_jugador Int,
+         FOREIGN KEY (Id_equipo_jugador) References Equipo(Id_equipo)
+);    

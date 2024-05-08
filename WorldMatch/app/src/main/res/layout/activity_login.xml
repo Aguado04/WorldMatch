@@ -118,14 +118,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.25" />
+        app:layout_constraintGuide_percent="0.26" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline10"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.92" />
+        app:layout_constraintGuide_percent="0.89" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline11"
@@ -156,7 +156,7 @@
         app:layout_constraintGuide_percent="0.64" />
 
     <CheckBox
-        android:id="@+id/checkBox"
+        android:id="@+id/terminos"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Acepto términos y condiciones"
@@ -190,7 +190,7 @@
         app:layout_constraintGuide_percent="0.71" />
 
     <Button
-        android:id="@+id/aceptRegistro"
+        android:id="@+id/aceptLogin"
         android:layout_width="134dp"
         android:layout_height="64dp"
         android:text=""
@@ -305,6 +305,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_begin="36dp" />
+        app:layout_constraintGuide_percent="0.09002433" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
