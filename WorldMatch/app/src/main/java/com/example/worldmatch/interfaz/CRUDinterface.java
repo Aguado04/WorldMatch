@@ -1,6 +1,8 @@
 package com.example.worldmatch.interfaz;
 
 import com.example.worldmatch.model.Cliente;
+import com.example.worldmatch.model.Equipo;
+import com.example.worldmatch.model.Liga;
 
 import java.util.List;
 
@@ -16,4 +18,10 @@ public interface CRUDinterface {
 
     @GET("usuario/all")
     Call<List<Cliente>> getAllClientes();
+
+    @GET("liga/all")
+    Call<List<Liga>> getAllLigas();
+
+    @GET("equipo/all")
+    Call<List<Equipo>> getAllEquipos();
 }

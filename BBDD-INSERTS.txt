@@ -1,0 +1,14 @@
+use worldmatch;
+INSERT into liga (Id_liga, Nombre_liga, Url_liga) VALUES
+     (null, "Liga de Madrid", "https://static.lvp.global/teams/logos/65fb0ed6efc71051639051.x2.png"),
+     (null, "Liga de Valencia", "https://static.lvp.global/teams/logos/65fc419a8aa06723209545.x2.png"),
+     (null, "Liga de Asturias", "https://static.lvp.global/teams/logos/65fb0e6e4a855876908089.x2.png"),
+     (null, "Liga de Galicia", "https://static.lvp.global/teams/logos/65fc678086fd0172672270.x2.png"),
+     (null, "Liga de Cataluña", "https://static.lvp.global/teams/logos/65fb125068a9f021684131.x2.png");
+
+INSERT into equipo (Id_equipo, Nombre_equipo, Id_liga_equipo) VALUES
+     (null, "Pozuelo", "1"),
+     (null, "Majadahonda", "1"),
+     (null, "Fuenlabrada", "1"),
+     (null, "Castellón", "2"),
+     (null, "Villareal", "2");
