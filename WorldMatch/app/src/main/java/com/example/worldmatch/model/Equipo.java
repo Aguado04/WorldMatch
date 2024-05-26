@@ -3,16 +3,22 @@ package com.example.worldmatch.model;
 import com.google.gson.annotations.SerializedName;
 
 public class Equipo {
+
     @SerializedName("id")
     private int id;
+
     @SerializedName("nombre")
     private String nombre;
-    @SerializedName("id_liga_equipo")
-    private int id_liga_equipo;
 
-    public Equipo(String nombre, int id_liga_equipo) {
+    @SerializedName("id_liga_equipo")
+    private int idLigaEquipo;
+
+    // Constructor, getters y setters
+
+    public Equipo(int id, String nombre, int idLigaEquipo) {
+        this.id = id;
         this.nombre = nombre;
-        this.id_liga_equipo = id_liga_equipo;
+        this.idLigaEquipo = idLigaEquipo;
     }
 
     public int getId() {
@@ -31,11 +37,11 @@ public class Equipo {
         this.nombre = nombre;
     }
 
-    public int getId_liga_equipo() {
-        return id_liga_equipo;
+    public int getIdLigaEquipo() {
+        return idLigaEquipo;
     }
 
-    public void setId_liga_equipo(int id_liga_equipo) {
-        this.id_liga_equipo = id_liga_equipo;
+    public void setIdLigaEquipo(int idLigaEquipo) {
+        this.idLigaEquipo = idLigaEquipo;
     }
 }

@@ -65,6 +65,7 @@ public class LigaAdapter extends RecyclerView.Adapter<LigaAdapter.LigaViewHolder
                         Liga selectedLiga = ligas.get(position);
                         Intent intent = new Intent(context, Equipos.class);
                         intent.putExtra("LigaNombre", selectedLiga.getNombre());
+                        intent.putExtra("LigaId", selectedLiga.getId());
                         context.startActivity(intent);
                     }
                 }

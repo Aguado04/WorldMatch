@@ -6,15 +6,16 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.worldmatch.adapters.EquipoAdapter;
-import com.example.worldmatch.adapters.LigaAdapter;
 import com.example.worldmatch.direcciones.Direccion;
 import com.example.worldmatch.interfaz.CRUDinterface;
 import com.example.worldmatch.model.Equipo;
-import com.example.worldmatch.model.Liga;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import okhttp3.OkHttpClient;
@@ -30,7 +31,7 @@ public class Equipos extends AppCompatActivity {
     private CRUDinterface crudInterface;
     private RecyclerView recyclerView;
     private EquipoAdapter equipoAdapter;
-
+    private int ligaId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,8 +39,15 @@ public class Equipos extends AppCompatActivity {
         setContentView(R.layout.activity_equipos);
 
         String ligaNombre = getIntent().getStringExtra("LigaNombre");
+        ligaId = getIntent().getIntExtra("LigaId", -1);
+
         TextView ligaNombreTextView = findViewById(R.id.ligaNombreTextView);
         ligaNombreTextView.setText(ligaNombre);
+
+        getWindow().setStatusBarColor(ContextCompat.getColor(this, R.color.fondo));
+
+        recyclerView = findViewById(R.id.RecyclerViewEquipos);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         getAllEquipos();
     }
@@ -59,19 +67,25 @@ public class Equipos extends AppCompatActivity {
                 if (response.isSuccessful()) {
                     equipos = response.body();
                     if (equipos != null) {
-                        equipoAdapter = new EquipoAdapter(equipos, Equipos.this);
+                        List<Equipo> filteredEquipos = new ArrayList<>();
+                        for (Equipo equipo : equipos) {
+                            if (equipo.getIdLigaEquipo() == ligaId) {
+                                filteredEquipos.add(equipo);
+                            }
+                        }
+                        equipoAdapter = new EquipoAdapter(filteredEquipos, Equipos.this);
                         recyclerView.setAdapter(equipoAdapter);
                     } else {
-                        Log.e("Response error: ", "Null products received");
+                        Log.e("Equipos", "No se recibieron equipos");
                     }
                 } else {
-                    Log.e("Response error: ", response.message());
+                    Log.e("Equipos", "Error en la respuesta: " + response.message());
                 }
             }
 
             @Override
             public void onFailure(@NonNull Call<List<Equipo>> call, @NonNull Throwable t) {
-                Log.e("Throw error: ", t.getMessage());
+                Log.e("Equipos", "Error en la llamada: " + t.getMessage());
             }
         });
     }

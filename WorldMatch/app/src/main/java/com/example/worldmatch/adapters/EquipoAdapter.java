@@ -4,13 +4,11 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.bumptech.glide.Glide;
 import com.example.worldmatch.R;
 import com.example.worldmatch.model.Equipo;
 
@@ -46,16 +44,13 @@ public class EquipoAdapter extends RecyclerView.Adapter<EquipoAdapter.EquipoView
     public class EquipoViewHolder extends RecyclerView.ViewHolder {
         TextView nombreText;
 
-
         public EquipoViewHolder(@NonNull View itemView) {
             super(itemView);
             nombreText = itemView.findViewById(R.id.nombreEquipo);
-
         }
 
         public void bind(Equipo equipo) {
             nombreText.setText(equipo.getNombre());
-
         }
     }
 }
