@@ -12,3 +12,10 @@ INSERT into equipo (Id_equipo, Nombre_equipo, Id_liga_equipo) VALUES
      (null, "Fuenlabrada", "1"),
      (null, "Castellón", "2"),
      (null, "Villareal", "2");
+
+INSERT into jugador (Id_jugador, Nombre_jugador, Edad_jugador, Dorsal_jugador, Id_equipo_jugador) VALUES
+     (null, "Alfonso", "16","3","1"),
+     (null, "Juan", "17","8","1"),
+     (null, "Carlos", "18","5","2"),
+     (null, "Miguel", "16","9","3"),
+     (null, "Arturo", "17","17","4");

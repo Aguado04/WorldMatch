@@ -13,8 +13,6 @@ public class Equipo {
     @SerializedName("id_liga_equipo")
     private int idLigaEquipo;
 
-    // Constructor, getters y setters
-
     public Equipo(int id, String nombre, int idLigaEquipo) {
         this.id = id;
         this.nombre = nombre;

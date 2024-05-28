@@ -56,14 +56,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.82" />
+        app:layout_constraintGuide_percent="0.85" />
 
     <Button
         android:id="@+id/button"
         android:backgroundTint="@color/fondo"
         android:layout_width="94dp"
         android:layout_height="56dp"
-        android:drawableBottom="@drawable/home"
+        android:drawableBottom="@drawable/ic_field"
         app:startIconTint="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -71,7 +71,7 @@
         app:layout_constraintTop_toTopOf="@+id/guideline18" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/Perfil"
         android:layout_width="94dp"
         android:layout_height="56dp"
         android:backgroundTint="@color/fondo"
@@ -108,14 +108,15 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/RecyclerView"
-        android:layout_width="428dp"
-        android:layout_height="424dp"
+        android:layout_width="436dp"
+        android:layout_height="428dp"
         android:layout_margin="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.529"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.592" />
+        app:layout_constraintVertical_bias="0.644" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline34"

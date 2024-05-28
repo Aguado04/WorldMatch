@@ -2,6 +2,7 @@ package com.example.worldmatch.interfaz;
 
 import com.example.worldmatch.model.Cliente;
 import com.example.worldmatch.model.Equipo;
+import com.example.worldmatch.model.Jugador;
 import com.example.worldmatch.model.Liga;
 
 import java.util.List;
@@ -25,6 +26,9 @@ public interface CRUDinterface {
 
     @GET("equipo/all")
     Call<List<Equipo>> getAllEquipos();
+
+    @GET("jugador/all")
+    Call<List<Jugador>> getAllJugadores();
 
 
 }

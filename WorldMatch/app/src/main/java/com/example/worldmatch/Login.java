@@ -29,6 +29,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class Login extends AppCompatActivity {
 
     static int idCliente;
+    static  String nombreCliente;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,6 +63,7 @@ public class Login extends AppCompatActivity {
             public void onClick(View view) {
                 String nombre = ((EditText) findViewById(R.id.username)).getText().toString();
                 String contrasena = ((EditText) findViewById(R.id.password)).getText().toString();
+                nombreCliente = nombre;
 
 
                 Retrofit retrofit = new Retrofit.Builder()
