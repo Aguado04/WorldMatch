@@ -11,11 +11,9 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.worldmatch.Equipos;
 import com.example.worldmatch.Jugadores;
 import com.example.worldmatch.R;
 import com.example.worldmatch.model.Equipo;
-import com.example.worldmatch.model.Liga;
 
 import java.util.List;
 
@@ -26,6 +24,10 @@ public class EquipoAdapter extends RecyclerView.Adapter<EquipoAdapter.EquipoView
     public EquipoAdapter(List<Equipo> equipos, Context context) {
         this.equipos = equipos;
         this.context = context;
+    }
+
+    public void setEquipos(List<Equipo> equipos) {
+        this.equipos = equipos;
     }
 
     @NonNull
@@ -69,8 +71,8 @@ public class EquipoAdapter extends RecyclerView.Adapter<EquipoAdapter.EquipoView
             });
         }
 
-            public void bind (Equipo equipo){
-                nombreText.setText(equipo.getNombre());
-            }
+        public void bind(Equipo equipo) {
+            nombreText.setText(equipo.getNombre());
         }
     }
+}

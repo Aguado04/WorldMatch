@@ -39,6 +39,22 @@
             android:textColor="@color/white"
             android:text="Dorsal" />
 
+        <Button
+            android:id="@+id/editarJugador"
+            android:layout_width="10dp"
+            android:layout_height="36dp"
+            android:layout_weight="1"
+            android:backgroundTint="#629260"
+            android:drawableBottom="@drawable/ic_lapiz" />
+
+        <Button
+            android:id="@+id/borrarJugador"
+            android:layout_width="10dp"
+            android:layout_height="38dp"
+            android:layout_weight="1"
+            android:backgroundTint="#629260"
+            android:drawableBottom="@drawable/ic_papelera" />
+
 
     </LinearLayout>
 

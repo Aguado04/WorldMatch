@@ -13,8 +13,7 @@ public class Equipo {
     @SerializedName("id_liga_equipo")
     private int idLigaEquipo;
 
-    public Equipo(int id, String nombre, int idLigaEquipo) {
-        this.id = id;
+    public Equipo(String nombre, int idLigaEquipo) {
         this.nombre = nombre;
         this.idLigaEquipo = idLigaEquipo;
     }

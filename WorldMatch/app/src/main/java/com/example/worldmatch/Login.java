@@ -30,6 +30,7 @@ public class Login extends AppCompatActivity {
 
     static int idCliente;
     static  String nombreCliente;
+    static boolean isAdmin = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -93,9 +94,10 @@ public class Login extends AppCompatActivity {
                                             Intent intent = new Intent(Login.this, MenuAdmin.class);
                                             startActivity(intent);
                                             Toast.makeText(getApplicationContext(), "Administrador", Toast.LENGTH_SHORT).show();
+                                            isAdmin = true;
 
                                         }else{
-                                            Intent intent = new Intent(Login.this, MenuCliente.class);
+                                            Intent intent = new Intent(Login.this, MenuAdmin.class);
                                             startActivity(intent);
                                             Toast.makeText(getApplicationContext(), "Bienvenido", Toast.LENGTH_SHORT).show();
                                         }

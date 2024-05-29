@@ -31,4 +31,6 @@ public class EquipoController {
     public Equipo saveEquipo(@RequestBody Equipo equipo){
         return equipoService.saveEquipo(equipo);
     }
+
+
 }

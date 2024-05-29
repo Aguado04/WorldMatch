@@ -7,6 +7,7 @@ import androidx.core.content.ContextCompat;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
@@ -50,6 +51,15 @@ public class Perfil extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 sobreRetro();
+            }
+        });
+
+        Button check = findViewById(R.id.menuPerfil);
+        check.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Perfil.this, MenuAdmin.class);
+                startActivity(intent);
             }
         });
 

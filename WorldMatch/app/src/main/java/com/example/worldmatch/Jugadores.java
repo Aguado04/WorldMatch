@@ -1,18 +1,30 @@
 package com.example.worldmatch;
 
+import static com.example.worldmatch.Login.isAdmin;
+import static com.example.worldmatch.direcciones.Direccion.BASE_URL;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.worldmatch.adapters.JugadorAdapter;
 import com.example.worldmatch.direcciones.Direccion;
 import com.example.worldmatch.interfaz.CRUDinterface;
+import com.example.worldmatch.model.Equipo;
 import com.example.worldmatch.model.Jugador;
 
 import java.util.ArrayList;
@@ -49,6 +61,18 @@ public class Jugadores extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         getAllJugadores();
+
+        Button anadirJugador = findViewById(R.id.anadirJugador);
+        anadirJugador.setBackgroundColor(Color.TRANSPARENT);
+        if(isAdmin == false){
+            anadirJugador.setVisibility(View.GONE);
+        }
+        anadirJugador.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                anadirJugadores();
+            }
+        });
     }
 
     private void getAllJugadores() {
@@ -88,4 +112,97 @@ public class Jugadores extends AppCompatActivity {
             }
         });
     }
+
+    private void anadirJugadores() {
+
+        final EditText editText1 = new EditText(this);
+        final EditText editText2 = new EditText(this);
+        final EditText editText3 = new EditText(this);
+
+        editText1.setHint("Nombre del jugador...");
+        editText2.setHint("Edad del jugador...");
+        editText3.setHint("Dorsal del jugador...");
+
+        LinearLayout layout = new LinearLayout(this);
+        layout.setBackgroundColor(ContextCompat.getColor(this, R.color.principal));
+        layout.setOrientation(LinearLayout.VERTICAL);
+
+        layout.addView(editText1);
+        layout.addView(editText2);
+        layout.addView(editText3);
+
+        new AlertDialog.Builder(this, R.style.CustomAlertDialogStyle)
+                .setIcon(R.drawable.ic_logo)
+                .setTitle("Añadir Jugador")
+                .setView(layout)
+                .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+
+                        String nombreJugador = editText1.getText().toString();
+                        String edadJugadorString = editText2.getText().toString();
+                        String dorsalJugadorString = editText3.getText().toString();
+
+                        if (nombreJugador.isEmpty() || edadJugadorString.isEmpty() || dorsalJugadorString.isEmpty()) {
+                            Toast.makeText(getApplicationContext(), "Campos vacíos", Toast.LENGTH_SHORT).show();
+                            return;
+                        }
+
+                        Integer edadJugador = Integer.valueOf(edadJugadorString);
+                        Integer dorsalJugador = Integer.valueOf(dorsalJugadorString);
+
+                        Retrofit retrofit = new Retrofit.Builder()
+                                .baseUrl(BASE_URL)
+                                .addConverterFactory(GsonConverterFactory.create())
+                                .build();
+
+                        CRUDinterface crudInterface = retrofit.create(CRUDinterface.class);
+                        Jugador jugador = new Jugador(nombreJugador, edadJugador, dorsalJugador, equipoId);
+
+                        Call<Jugador> call = crudInterface.insertDataJugador(jugador);
+
+                        call.enqueue(new Callback<Jugador>() {
+                            @Override
+                            public void onResponse(Call<Jugador> call, Response<Jugador> response) {
+                                if (response.isSuccessful()) {
+                                    Jugador nuevoJugador = response.body();
+                                    if (nuevoJugador != null) {
+                                        jugadores.add(nuevoJugador); // Agregar el nuevo equipo a la lista
+                                        // Filtrar equipos por la liga seleccionada
+                                        List<Jugador> filteredJugadores = new ArrayList<>();
+                                        for (Jugador jugador : jugadores) {
+                                            if (jugador.getIdEquipoJugador() == equipoId) {
+                                                filteredJugadores.add(jugador);
+                                            }
+                                        }
+                                        // Actualizar el adaptador con la lista filtrada actualizada
+                                        jugadorAdapter.setJugadores(filteredJugadores);
+                                        jugadorAdapter.notifyDataSetChanged(); // Notificar al adaptador que los datos han cambiado
+                                        Toast.makeText(getApplicationContext(), "Equipo insertado", Toast.LENGTH_SHORT).show();
+                                    } else {
+                                        Log.e("Error: ", "Equipo insertado es nula");
+                                    }
+                                } else {
+                                    Log.e("Error: ", "Error al insertar equipo");
+                                    Log.d("Error: ", response.message());
+                                }
+                            }
+
+                            @Override
+                            public void onFailure(Call<Jugador> call, Throwable t) {
+                                Log.e("Throw error: ", t.getMessage());
+                            }
+                        });
+                    }
+                })
+                .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        Log.d("Mensaje", "Cancelado");
+                    }
+                })
+                .show();
+    }
+
+
 }

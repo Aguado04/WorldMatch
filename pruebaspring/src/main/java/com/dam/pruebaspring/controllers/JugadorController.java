@@ -33,4 +33,12 @@ public class JugadorController {
     public Jugador saveJugador(@RequestBody Jugador jugador){
         return jugadorService.saveJugador(jugador);
     }
+
+    @PutMapping("/update")
+    public Jugador updateJugador(@RequestBody Jugador jugador){
+        return jugadorService.updateJugador(jugador);
+    }
+
+    @DeleteMapping("/delete/{id}")
+    public Boolean deleteJugador(@PathVariable Integer id) {return jugadorService.deleteJugador(id);}
 }
