@@ -1,58 +1,45 @@
 CREATE DATABASE worldmatch;
-use worldmatch;
+USE worldmatch;
+
 CREATE TABLE Usuario(
-    Id_cliente Int auto_increment NOT NULL,
-	Nombre_cliente Varchar(30),
-    Contrasena_cliente Varchar(30),
-    Email_cliente Varchar(30),
-    Primary Key(Id_cliente)
-);
-
-CREATE TABLE Favorito(
-    Id_favorito Int auto_increment NOT NULL,
-       Nombre_favorito Varchar(90),
-    Primary Key(Id_favorito)
-);
-
-CREATE TABLE Usuario_Favorito(
-	Id_usuario_favorito Int,
-    Id_favorito_usuario Int,
-    
-    FOREIGN KEY (Id_usuario_favorito) REFERENCES Usuario(Id_cliente),
-    FOREIGN KEY (Id_favorito_usuario) REFERENCES Favorito(Id_favorito)
+    Id_cliente INT AUTO_INCREMENT NOT NULL,
+    Nombre_cliente VARCHAR(30),
+    Contrasena_cliente VARCHAR(30),
+    Email_cliente VARCHAR(30),
+    PRIMARY KEY (Id_cliente)
 );
 
 CREATE TABLE Liga(
-        Id_liga Int auto_increment NOT NULL,
-        Nombre_liga Varchar(90),
-        Url_liga Varchar(90),
-        Primary Key(Id_liga)
-);
-
-CREATE TABLE Liga_Favorito(
-	Id_liga_favorito Int,
-    Id_favorito_liga Int,
-    
-    FOREIGN KEY (Id_liga_favorito) REFERENCES Liga(Id_liga),
-    FOREIGN KEY (Id_favorito_liga) REFERENCES Favorito(Id_favorito)
+    Id_liga INT AUTO_INCREMENT NOT NULL,
+    Nombre_liga VARCHAR(90),
+    Url_liga VARCHAR(90),
+    PRIMARY KEY (Id_liga)
 );
 
 CREATE TABLE Equipo(
-         Id_equipo Int auto_increment NOT NULL,
-         Nombre_equipo Varchar(90),
-
-         Primary Key(Id_equipo),
-         Id_liga_equipo Int,
-         FOREIGN KEY (Id_liga_equipo) References Liga(Id_liga)
+    Id_equipo INT AUTO_INCREMENT NOT NULL,
+    Nombre_equipo VARCHAR(90),
+    Id_liga_equipo INT,
+    PRIMARY KEY (Id_equipo),
+    FOREIGN KEY (Id_liga_equipo) REFERENCES Liga(Id_liga)
 );
 
 CREATE TABLE Jugador(
-         Id_jugador Int auto_increment NOT NULL,
-         Nombre_jugador Varchar(90),
-         Edad_jugador Varchar(90),
-         Dorsal_jugador Varchar(90),
+    Id_jugador INT AUTO_INCREMENT NOT NULL,
+    Nombre_jugador VARCHAR(90),
+    Edad_jugador VARCHAR(90),
+    Dorsal_jugador VARCHAR(90),
+    Id_equipo_jugador INT,
+    PRIMARY KEY (Id_jugador),
+    FOREIGN KEY (Id_equipo_jugador) REFERENCES Equipo(Id_equipo)
+);
 
-         Primary Key (Id_jugador),
-         Id_equipo_jugador Int,
-         FOREIGN KEY (Id_equipo_jugador) References Equipo(Id_equipo)
-);    
+CREATE TABLE Favorito(
+    Id_favorito INT AUTO_INCREMENT NOT NULL,
+    Nombre_favorito VARCHAR(90),
+    Id_usuario_favorito INT,
+    Id_liga_favorito INT,
+    PRIMARY KEY (Id_favorito),
+    FOREIGN KEY (Id_usuario_favorito) REFERENCES Usuario(Id_cliente),
+    FOREIGN KEY (Id_liga_favorito) REFERENCES Liga(Id_liga)
+);

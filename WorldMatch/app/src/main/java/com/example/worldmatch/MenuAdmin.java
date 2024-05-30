@@ -48,6 +48,15 @@ public class MenuAdmin extends AppCompatActivity {
         setContentView(R.layout.activity_menu_admin);
         getWindow().setStatusBarColor(ContextCompat.getColor(this, R.color.fondo));
 
+        Button partidos = findViewById(R.id.Partidos);
+        partidos.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MenuAdmin.this, Partidos.class);
+                startActivity(intent);
+            }
+        });
+
         Button perfil = findViewById(R.id.Perfil);
         perfil.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -118,7 +127,7 @@ public class MenuAdmin extends AppCompatActivity {
     }
 
     private void anadirLigas() {
-        // Crear los EditText para cada campo necesario
+
         final EditText editText1 = new EditText(this);
         final EditText editText2 = new EditText(this);
 
@@ -164,8 +173,8 @@ public class MenuAdmin extends AppCompatActivity {
                                 if (response.isSuccessful()) {
                                     Liga nuevaLiga = response.body();
                                     if (nuevaLiga != null) {
-                                        ligas.add(nuevaLiga); // Añade la nueva liga a la lista
-                                        ligaAdapter.notifyItemInserted(ligas.size() - 1); // Notifica al adaptador
+                                        ligas.add(nuevaLiga);
+                                        ligaAdapter.notifyItemInserted(ligas.size() - 1);
                                         Toast.makeText(getApplicationContext(), "Liga insertada", Toast.LENGTH_SHORT).show();
                                     } else {
                                         Log.e("Error: ", "Liga insertada es nula");

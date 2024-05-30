@@ -28,9 +28,9 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class Login extends AppCompatActivity {
 
-    static int idCliente;
+    public static int idCliente;
     static  String nombreCliente;
-    static boolean isAdmin = false;
+    public static boolean isAdmin = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

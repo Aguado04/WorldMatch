@@ -96,11 +96,11 @@ public class Equipos extends AppCompatActivity {
                     if (equipos != null) {
                         List<Equipo> filteredEquipos = new ArrayList<>();
                         for (Equipo equipo : equipos) {
-                            if (equipo.getIdLigaEquipo() == ligaId) { // Filtrar por liga
+                            if (equipo.getIdLigaEquipo() == ligaId) {
                                 filteredEquipos.add(equipo);
                             }
                         }
-                        equipoAdapter.setEquipos(filteredEquipos); // Usar los equipos filtrados
+                        equipoAdapter.setEquipos(filteredEquipos);
                         equipoAdapter.notifyDataSetChanged();
                     } else {
                         Log.e("Equipos", "No se recibieron equipos");
@@ -167,9 +167,9 @@ public class Equipos extends AppCompatActivity {
                                                 filteredEquipos.add(equipo);
                                             }
                                         }
-                                        // Actualizar el adaptador con la lista filtrada actualizada
+
                                         equipoAdapter.setEquipos(filteredEquipos);
-                                        equipoAdapter.notifyDataSetChanged(); // Notificar al adaptador que los datos han cambiado
+                                        equipoAdapter.notifyDataSetChanged();
                                         Toast.makeText(getApplicationContext(), "Equipo insertado", Toast.LENGTH_SHORT).show();
                                     } else {
                                         Log.e("Error: ", "Equipo insertado es nula");

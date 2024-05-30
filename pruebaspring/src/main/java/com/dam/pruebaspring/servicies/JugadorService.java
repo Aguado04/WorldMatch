@@ -31,8 +31,6 @@ public class JugadorService {
     public Jugador updateJugador(Jugador jugador) {
         return jugadorRepository.save(jugador);
     }
-
-
     public  Boolean deleteJugador(Integer id) {
         jugadorRepository.deleteById(id);
         return jugadorRepository.findById(id).isEmpty();

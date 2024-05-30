@@ -1,5 +1,6 @@
 package com.example.worldmatch.adapters;
 
+import static com.example.worldmatch.Login.isAdmin;
 import static com.example.worldmatch.direcciones.Direccion.BASE_URL;
 
 import android.annotation.SuppressLint;
@@ -55,6 +56,11 @@ public class JugadorAdapter extends RecyclerView.Adapter<JugadorAdapter.JugadorV
     public void onBindViewHolder(@NonNull JugadorViewHolder holder, @SuppressLint("RecyclerView") int position) {
         Jugador jugador = jugadores.get(position);
         holder.bind(jugador);
+
+        if(isAdmin == false){
+            holder.actualizarJugador.setVisibility(View.GONE);
+            holder.borrarJugador.setVisibility(View.GONE);
+        }
 
         holder.actualizarJugador.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -156,8 +162,8 @@ public class JugadorAdapter extends RecyclerView.Adapter<JugadorAdapter.JugadorV
                             public void onResponse(Call<Jugador> call, Response<Jugador> response) {
                                 if (response.isSuccessful()) {
                                     Toast.makeText(context, "Jugador actualizado correctamente", Toast.LENGTH_SHORT).show();
-                                    jugadores.set(position, jugador); // Actualizar la lista de jugadores
-                                    notifyItemChanged(position); // Notificar al adaptador
+                                    jugadores.set(position, jugador);
+                                    notifyItemChanged(position);
                                 } else {
                                     Toast.makeText(context, "Error al actualizar jugador: " + response.message(), Toast.LENGTH_SHORT).show();
                                 }
@@ -194,7 +200,6 @@ public class JugadorAdapter extends RecyclerView.Adapter<JugadorAdapter.JugadorV
                             @Override
                             public void onResponse(Call<Boolean> call, Response<Boolean> response) {
                                 if (response.isSuccessful() && response.body() != null && response.body()) {
-                                    // Eliminar el jugador de la lista y notificar al adaptador
                                     jugadores.remove(position);
                                     notifyItemRemoved(position);
                                     notifyItemRangeChanged(position, jugadores.size());

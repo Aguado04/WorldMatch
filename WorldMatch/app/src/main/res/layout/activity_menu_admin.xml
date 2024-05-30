@@ -56,15 +56,16 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.85" />
+        app:layout_constraintGuide_percent="0.87" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/Partidos"
         android:backgroundTint="@color/fondo"
         android:layout_width="94dp"
         android:layout_height="56dp"
         android:drawableBottom="@drawable/ic_field"
         app:startIconTint="@color/white"
+        android:layout_marginTop="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

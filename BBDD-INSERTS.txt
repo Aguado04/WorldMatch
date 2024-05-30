@@ -1,4 +1,7 @@
 use worldmatch;
+INSERT into usuario (Id_cliente, Nombre_cliente, Contrasena_cliente, Email_cliente) VALUES
+     (null, "admin", "1234", "admin@gmail.com");
+
 INSERT into liga (Id_liga, Nombre_liga, Url_liga) VALUES
      (null, "Liga de Madrid", "https://static.lvp.global/teams/logos/65fb0ed6efc71051639051.x2.png"),
      (null, "Liga de Valencia", "https://static.lvp.global/teams/logos/65fc419a8aa06723209545.x2.png"),

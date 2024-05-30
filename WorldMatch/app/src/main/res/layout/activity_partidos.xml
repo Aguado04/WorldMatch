@@ -5,12 +5,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/fondo"
-    tools:context=".Favoritos">
+    tools:context=".Partidos">
 
 
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/RecyclerViewFavoritos"
+        android:id="@+id/RecyclerViewPartidos"
         android:layout_width="409dp"
         android:layout_height="510dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -30,7 +30,7 @@
         android:id="@+id/textView8"
         android:layout_width="206dp"
         android:layout_height="66dp"
-        android:text="TUS FAVORITOS:"
+        android:text="PARTIDOS:"
         android:fontFamily="@font/fuete"
         android:textColor="@color/white"
         android:textAlignment="center"

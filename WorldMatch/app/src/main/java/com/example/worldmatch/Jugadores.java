@@ -167,23 +167,23 @@ public class Jugadores extends AppCompatActivity {
                                 if (response.isSuccessful()) {
                                     Jugador nuevoJugador = response.body();
                                     if (nuevoJugador != null) {
-                                        jugadores.add(nuevoJugador); // Agregar el nuevo equipo a la lista
-                                        // Filtrar equipos por la liga seleccionada
+                                        jugadores.add(nuevoJugador);
+
                                         List<Jugador> filteredJugadores = new ArrayList<>();
                                         for (Jugador jugador : jugadores) {
                                             if (jugador.getIdEquipoJugador() == equipoId) {
                                                 filteredJugadores.add(jugador);
                                             }
                                         }
-                                        // Actualizar el adaptador con la lista filtrada actualizada
+
                                         jugadorAdapter.setJugadores(filteredJugadores);
-                                        jugadorAdapter.notifyDataSetChanged(); // Notificar al adaptador que los datos han cambiado
-                                        Toast.makeText(getApplicationContext(), "Equipo insertado", Toast.LENGTH_SHORT).show();
+                                        jugadorAdapter.notifyDataSetChanged();
+                                        Toast.makeText(getApplicationContext(), "Jugador insertado", Toast.LENGTH_SHORT).show();
                                     } else {
-                                        Log.e("Error: ", "Equipo insertado es nula");
+                                        Log.e("Error: ", "Jugador insertado es nulo");
                                     }
                                 } else {
-                                    Log.e("Error: ", "Error al insertar equipo");
+                                    Log.e("Error: ", "Error al insertar jugador");
                                     Log.d("Error: ", response.message());
                                 }
                             }
